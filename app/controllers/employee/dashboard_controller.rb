@@ -25,6 +25,9 @@ class Employee::DashboardController < ApplicationController
     new_total = @item.inventory - @item_order.quantity
     @item.update(inventory: new_total)
     @item_order.update(status: 1)
+    if @order.all_done?
+      @order.update(status: 'packaged')
+    end
     redirect_to merchant_order_show_path(@order)
   end
 

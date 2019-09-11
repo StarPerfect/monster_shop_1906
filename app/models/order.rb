@@ -17,8 +17,9 @@ class Order <ApplicationRecord
   end
 
   def all_done?
-    item_orders.all? { |item_order| item_order.fulfilled == true }
+    item_orders.all? { |item_order| item_order.fulfilled? == true }
   end
+
 
   def total_items_in_this_order(merchant)
     items.where(merchant_id: merchant.id).sum(:quantity)
