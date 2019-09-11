@@ -5,7 +5,12 @@ class Admin::DashboardController < ApplicationController
   end
 
   def user_show
-    @user = User.find(params[:id])
+    # @user = User.find(params[:user_id])
+
+  end
+
+  def merchant_show
+
   end
 
   def ship
@@ -22,8 +27,10 @@ class Admin::DashboardController < ApplicationController
     merchant = Merchant.find(params[:id])
     if merchant.enabled? == true
       merchant.update(enabled: false)
+      merchant.items.update(active?: false)
     else
       merchant.update(enabled: true)
+      merchant.items.update(active?: true)
     end
     redirect_to "/admin/merchants"
   end
