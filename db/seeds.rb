@@ -27,3 +27,7 @@ corina = User.create(name: 'Corina Allen', address: '1488 S. Kenton', city: 'Aur
 kate = User.create(name: "Kate Long", address: "123 Kate Street", city: "Fort Collins", state: "CO", zip: "80011", email:"kateaswesome@gmail.com", password: "ours", role: 2, merchant_id: dog_shop.id )
 user = User.create(name:"Santiago", address:"123 tree st", city:"lakewood", state:"CO", zip: "19283", email:"santamonica@hotmail.com", password: "everyone", role: 3)
 scott = User.create(name: "Scott Payton", address: "123 Scott Street", city: "Stapleton", state: "CO", zip: "80011", email:"bigfun@gmail.com", password: "mine", role: 0)
+admin = User.create(name:"Administrator", address:"123 tree st", city:"lakewood", state:"CO", zip: "19283", email: "admin_boss@gmail.com", password: "admin", role: 3)
+reg_user = User.create(name: 'Reg Dude', address: '567 boring lane', city: 'Denver', state: 'CO', zip: '80204', email: 'regdude@gmail.com', password: 'fuckingproject')
+employee_user = User.create(name: 'Worker Bee', address: '1111 Hive Drive', city: 'Denver', state: 'CO', zip: '80204', email: 'workerbee@gmail.com', password: 'honey', role: 1)
+merchant_owner = User.create(name: 'Queen Bee', address: '1111 Hive Drive', city: 'Denver', state: 'CO', zip: '80204', email: 'beyonce@gmail.com', password: 'queenb', role: 2)
