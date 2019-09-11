@@ -336,7 +336,7 @@ The item image is a link to that item's show page
 ```
 
 ```
-[ kelly? ] done
+[x] done
 
 User Story 18, Items Index Page Statistics
 
@@ -545,7 +545,7 @@ The order status changes from "pending" to "packaged"
 ```
 
 ```
-[ Santiago ] done
+[x] done
 
 User Story 30, Admin can see all orders
 
@@ -567,7 +567,7 @@ Orders are sorted by "status" in this order:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 31, Admin can "ship" an order
 
@@ -588,7 +588,7 @@ This is the landing page when a merchant logs in. Here, they will see their cont
 Admin users will see more information on the "/merchants" route that all users see. For example, on this page, an admin user can navigate to each merchant's dashboard under a route like "/admin/merchants/7". This will allow the admin to perform every action that the merchant themselves can perform. Admin users can also "downgrade" a merchant account to become a user account.
 
 ```
-[ ] done
+[x] done
 
 User Story 32, Merchant Dashboard Show Page
 
@@ -598,7 +598,7 @@ I see the name and full address of the merchant I work for
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 33, Merchant Dashboard displays Orders
 
@@ -614,7 +614,7 @@ Each order listed includes the following information:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 34, Merchant's Items index page
 
@@ -837,7 +837,7 @@ For each item, I see the following information:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 48, Merchant fulfills part of an order
 
@@ -856,7 +856,7 @@ If I have already fulfilled this item, I see text indicating such.
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 49, Merchant cannot fulfill an order due to lack of inventory
 
