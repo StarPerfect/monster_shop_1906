@@ -124,8 +124,8 @@ RSpec.describe 'Admin Navigation' do
 # I am returned to the admin's merchant index page where I see that the merchant's account is now disabled
 # And I see a flash message that the merchant's account is now disabled
 
-it "sjkak" do
-  binding.pry
+xit "sjkak" do
+
   user = User.create!(name: 'Corina', address: '789 Hungry Way', city: 'Denver', state: 'Colorado', zip: '80205', email: 'Star@gmail.com', password: 'Hello123')
   visit login_path
 
