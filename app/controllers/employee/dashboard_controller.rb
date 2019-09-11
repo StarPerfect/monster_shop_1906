@@ -8,6 +8,15 @@ class Employee::DashboardController < ApplicationController
     end
   end
 
+  def index
+    @user = current_user
+    @merchant = Merchant.find(@user.merchant_id)
+  end
+
+  def order_show
+    @order = Order.find(params[:id])
+  end
+
 
   # private
   #
