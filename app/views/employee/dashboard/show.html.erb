@@ -6,3 +6,10 @@
 <p> <%= @merchant.city  %> </p>
 <p> <%= @merchant.state  %> </p>
 <p> <%= @merchant.zip %> </p>
+
+<% @orders.each do |order| %>
+  <%= order.id %>
+  <%= order.created_at %>
+  <p>Total Items: <%= order.total_items_in_this_order(@merchant) %></p>
+  <%= order.total_value(@merchant) %>
+<% end %>
