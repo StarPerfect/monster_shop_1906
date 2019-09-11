@@ -4,7 +4,11 @@
     <p>Item: <%= item_order.item.name %></p>
     <p>Price: <%= item_order.price %></p>
     <p>Quantity to be Fulfilled: <%= item_order.quantity %></p>
-    <%= link_to "Fulfill This Orders Item", item_fulfillment_path %>
+    <% if @merchant.has_inventory?(item_order) %>
+    <%= link_to "Fulfill This Orders Item", fulfill_path %>
+    <% else %>
+      <p>You cannot fulfill this order, requested quantity is too high.</p>
+    <% end %>
     <br>
     <br>
     <br>
