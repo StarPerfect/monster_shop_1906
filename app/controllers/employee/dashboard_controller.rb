@@ -19,8 +19,13 @@ class Employee::DashboardController < ApplicationController
   end
 
   def update
-    binding.pry
-    
+    @item_order = ItemOrder.find(params[:id])
+    @order = Order.find(@item_order.order_id)
+    @item = Item.find(@item_order.item_id)
+    new_total = @item.inventory - @item_order.quantity
+    @item.update(inventory: new_total)
+    @item_order.update(status: 1)
+    redirect_to merchant_order_show_path(@order)
   end
 
 end
