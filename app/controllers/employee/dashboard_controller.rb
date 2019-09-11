@@ -1,6 +1,8 @@
 class Employee::DashboardController < ApplicationController
+
   def show
     @user = current_user
+    @orders = Order.all
     if @user.role == 1 || 2
       @merchant = Merchant.find(@user.merchant_id)
     end
