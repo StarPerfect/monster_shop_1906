@@ -1,9 +1,10 @@
-<h1>Current Registered UsersController</h1>
-<h3><br />(with registration date and user type)</h3>
-<p>
+<center>
+<h1>Current Registered Users</h1>
 <% @users.each do |user| %>
+<p>
 <%= link_to user.name, "/admin/users/#{user.id}" %>
-<%= user.created_at %>
-<%= user.role %>
+<br />Registered on <%= user.created_at %>
+<br />User Type: <%= user.role %>
 <% end %>
 </p>
+</center>
