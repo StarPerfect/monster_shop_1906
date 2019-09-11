@@ -10,7 +10,7 @@ class Admin::DashboardController < ApplicationController
   end
 
   def merchant_show
-
+    @merchant = Merchant.find(params[:id])
   end
 
   def ship
