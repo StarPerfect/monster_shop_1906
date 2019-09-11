@@ -57,6 +57,7 @@ Rails.application.routes.draw do
   get '/merchant', to: 'merchant/dashboard#show', as: :merchant_dashboard
   get '/merchant/orders/:id', to: 'employee/dashboard#order_show', as: :merchant_order_show
   get '/merchant/items', to: 'employee/dashboard#index', as: :merchant_items
+  patch '/merchant/items', to: 'employee/dashboard#update', as: :fulfill
 
   get '/login', to: 'sessions#new', as: :login
   post '/login', to: 'sessions#create'
