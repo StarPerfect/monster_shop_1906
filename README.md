@@ -890,7 +890,7 @@ I see an "enable" button next to any merchants whose accounts are disabled
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 51, Admin User Index Page
 
@@ -905,7 +905,7 @@ Next to each user's name I see what type of user they are
 ```
 
 ```
-[ ] done
+[X] done
 
 User Story 52, Admin User Profile Page
 

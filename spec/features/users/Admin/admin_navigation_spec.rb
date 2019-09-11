@@ -51,8 +51,7 @@ RSpec.describe 'Admin Navigation' do
       end
 
 
-    it "shows me all orders in the system whith order id
-    and links to the user " do
+    it "shows me all orders in the system whith order id and links to the user " do
       @kate = User.create(name: "Kate Long", address: "123 Kate Street", city: "Fort Collins", state: "CO", zip: "80011", email:"kateaswesome@gmail.com", password: "ours", role: 3)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@kate)
 

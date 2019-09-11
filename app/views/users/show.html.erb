@@ -1,5 +1,5 @@
 <center>
-  <h1>This is a regular user profile page</h1>
+  <h1>User Profile</h1>
 <p><%= link_to 'My Orders', user_orders_path %></p>
 <h2>Profile</h2>
   <p>Name: <%= @user.name %> </p>
@@ -8,6 +8,8 @@
   <p>City: <%= @user.city %> </p>
   <p>State: <%= @user.state %> </p>
   <p>Zip: <%= @user.zip %> </p>
-<%= link_to "Edit Profile", profile_edit_path %>
-<%= link_to "Edit Password", profile_edit_password_path %>
+  <% if current_user == @user %>
+    <%= link_to "Edit Profile", profile_edit_path %>
+    <%= link_to "Edit Password", profile_edit_password_path %>
+  <% end %>
 </center>
