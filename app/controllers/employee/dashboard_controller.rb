@@ -30,5 +30,4 @@ class Employee::DashboardController < ApplicationController
     end
     redirect_to merchant_order_show_path(@order)
   end
-
 end
