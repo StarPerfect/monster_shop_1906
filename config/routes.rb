@@ -61,6 +61,8 @@ Rails.application.routes.draw do
   get '/merchant', to: 'merchant/dashboard#show', as: :merchant_dashboard
   get '/merchant/orders/:id', to: 'employee/dashboard#order_show', as: :merchant_order_show
   get '/merchant/items', to: 'employee/dashboard#index', as: :merchant_items
+  get '/merchant/items', to: 'merchant/dashboard#index' # NEED TO ADD THIS PATH FOR MERCHANT FUNCTIONALITY
+  patch '/merchant/items', to: 'merchant/dashboard#item_status', as: :item_status
   patch '/merchant/orders/:id', to: 'employee/dashboard#update', as: :fulfill
 
   get '/login', to: 'sessions#new', as: :login
