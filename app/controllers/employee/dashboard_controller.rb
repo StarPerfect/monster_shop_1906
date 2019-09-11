@@ -14,14 +14,13 @@ class Employee::DashboardController < ApplicationController
   end
 
   def order_show
+    @merchant = Merchant.find(current_user.merchant_id)
     @order = Order.find(params[:id])
   end
 
-
-  # private
-  #
-  # def merchant_params
-  #   params.require(:user).permit(:merchant_id)
-  # end
+  def update
+    binding.pry
+    
+  end
 
 end
