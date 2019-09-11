@@ -6,6 +6,11 @@ class Admin::DashboardController < ApplicationController
 
   def user_show
     # @user = User.find(params[:user_id])
+
+  end
+
+  def merchant_show
+
   end
 
   def ship
@@ -14,10 +19,17 @@ class Admin::DashboardController < ApplicationController
     redirect_to "/admin"
   end
 
-  def method_name
-    # merchant = Merchant.find
-    # merchant.update(enabled: false)
-    # redirect_to ""
+  def index
+    @merchants = Merchant.all
   end
 
+  def able
+    merchant = Merchant.find(params[:id])
+    if merchant.enabled? == true
+      merchant.update(enabled: false)
+    else
+      merchant.update(enabled: true)
+    end
+    redirect_to "/admin/merchants"
+  end
 end

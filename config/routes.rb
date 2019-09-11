@@ -53,6 +53,9 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin/dashboard#show', as: :admin_dashboard
   get '/admin/users/:id', to: 'admin/dashboard#user_show', as: :admin_user_show
   patch '/admin', to: 'admin/dashboard#ship', as: :admin_ship_order
+  get '/admin/merchants', to: 'admin/dashboard#index'
+  get '/admin/merchants/:id', to: 'admin/dashboard#merchant_show', as: :admin_merchant_show
+  patch '/admin/merchants/:id', to: 'admin/dashboard#able', as: :able
 
   get '/merchant', to: 'merchant/dashboard#show', as: :merchant_dashboard
   get '/merchant/orders/:id', to: 'employee/dashboard#order_show', as: :merchant_order_show
