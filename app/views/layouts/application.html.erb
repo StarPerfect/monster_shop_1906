@@ -28,7 +28,7 @@
           <%= link_to 'Dashboard', merchant_dashboard_path %>
         <% elsif current_admin? %>
           <%= link_to 'Dashboard', admin_dashboard_path %>
-          <%= link_to 'Users'%>
+          <%= link_to 'Users', admin_users_path %>
         <% end %>
       <% end %>
     </nav>
