@@ -5,8 +5,8 @@
   <p>Available Inventory: <%= item.inventory %></p>
   <p>Active Status: <%= item.active? %></p>
   <% if item.active? != true %>
-    <p><%= link_to "Deactiveate This Item", deactiveate_path %></p>
+    <p><%= link_to "Deactiveate This Item"%></p>
   <% else %>
-    <p><%= link_to "Activate This Item", activate_path %></p>
+    <p><%= link_to "Activate This Item" %></p>
   <% end %>
 <% end %>
