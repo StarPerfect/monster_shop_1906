@@ -63,7 +63,7 @@ RSpec.describe 'Login/Logout Functionality' do
 
       expect(page).to_not have_content("This is a employee user profile page")
       expect(page).to_not have_content("This is a merchant user profile page")
-      expect(page).to have_content("This is a admin user profile page")
+      expect(page).to have_content("Admin Dashboard")
       expect(page).to_not have_content("User Profile")
     end
   end
