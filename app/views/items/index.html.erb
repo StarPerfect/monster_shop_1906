@@ -25,18 +25,20 @@
     <% else %>
     <% end %>
     <% end %>
+  </section>
 
 
-    <h2>Item Stats By Popularity</h2>
+<section id="stats">
+    <h2><b>Item Stats By Popularity</b></h2>
 
-    <p>Best</p>
+    <p><i>Best</i></p>
     <% @item_stats_top.each do |item, quantity| %>
      Name: <%= item %>
      Sold: <%= quantity %>
      <% end %>
      <br>
      <br>
-     <p>Worst</p>
+     <p><i>Worst</i></p>
      <% @item_stats_bottom. each do |item, quantity| %>
        Name: <%= item %>
        Sold: <%= quantity %>
