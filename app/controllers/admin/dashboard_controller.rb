@@ -5,7 +5,8 @@ class Admin::DashboardController < ApplicationController
   end
 
   def user_show
-    # @user = User.find(params[:user_id])
+    binding.pry
+    @user = User.find(params[:id])
   end
 
   def ship
