@@ -27,8 +27,8 @@ RSpec.describe 'As a Merchant/Employee' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(kate)
 
       visit employee_dashboard_path
-      save_and_open_page
-      expect(page).to have_content()
+      # save_and_open_page
+      # expect(page).to have_content()
 
     end
   end
