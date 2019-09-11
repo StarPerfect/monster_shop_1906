@@ -1,11 +1,4 @@
-# As an admin user
-# When I click the "Users" link in the nav (only visible to admins)
-# Then my current URI route is "/admin/users"
-# Only admin users can reach this path.
-# I see all users in the system
-# Each user's name is a link to a show page for that user ("/admin/users/5")
-# Next to each user's name is the date they registered
-# Next to each user's name I see what type of user they are
+
 require 'rails_helper'
 
 RSpec.describe 'Admin Users' do
@@ -25,7 +18,7 @@ RSpec.describe 'Admin Users' do
     click_button 'Login'
 
     click_link 'Users'
-save_and_open_page
+
     expect(page).to have_link(@reg_user.name)
     expect(page).to have_content(@reg_user.created_at)
     expect(page).to have_content('User Type: default')
@@ -41,21 +34,21 @@ save_and_open_page
 # When I visit a user's profile page ("/admin/users/5")
 # I see the same information the user would see themselves
 # I do not see a link to edit their profile
-  #
-  # describe 'when an admin visits a users profile page' do
-  #   it 'can see profile but not edit it' do
-  #
-  #     visit login_path
-  #
-  #     fill_in :email, with: 'admin_boss@gmail.com'
-  #     fill_in :password, with: 'admin'
-  #
-  #     visit "/admin/users/#{reg_user.id}"
-  #
-  #     expect(page).to_not have_link('Edit Profile')
-  #     expect(page).to have_content(reg_user.name)
-  #     expect(page).to have_content(reg_user.email)
-  #     expect(page).to have_content(reg_user.address)
-  #   end
-  # end
+
+  describe 'when an admin visits a users profile page' do
+    it 'can see profile but not edit it' do
+
+      visit login_path
+
+      fill_in :email, with: 'admin_boss@gmail.com'
+      fill_in :password, with: 'admin'
+
+      visit "/admin/users/#{@reg_user.id}"
+
+      expect(page).to_not have_link('Edit Profile')
+      expect(page).to have_content(@reg_user.name)
+      expect(page).to have_content(@reg_user.email)
+      expect(page).to have_content(@reg_user.address)
+    end
+  end
 end
