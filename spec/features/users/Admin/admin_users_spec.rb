@@ -30,11 +30,6 @@ RSpec.describe 'Admin Users' do
     expect(page).to have_content('User Type: merchant')
   end
 
-# As an admin user
-# When I visit a user's profile page ("/admin/users/5")
-# I see the same information the user would see themselves
-# I do not see a link to edit their profile
-
   describe 'when an admin visits a users profile page' do
     it 'can see profile but not edit it' do
 
