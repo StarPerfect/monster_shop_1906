@@ -1,0 +1,11 @@
+<h1>Order Show Page</h1>
+
+  <% @order.item_orders.each do |item_order| %>
+    <p>Item: <%= item_order.item.name %></p>
+    <p>Price: <%= item_order.price %></p>
+    <p>Quantity to be Fulfilled: <%= item_order.quantity %></p>
+    <%= link_to "Fulfill This Orders Item", item_fulfillment_path %>
+    <br>
+    <br>
+    <br>
+  <% end %>
