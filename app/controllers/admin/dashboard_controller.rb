@@ -5,7 +5,6 @@ class Admin::DashboardController < ApplicationController
   end
 
   def user_show
-    binding.pry
     @user = User.find(params[:id])
   end
 
