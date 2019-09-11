@@ -16,6 +16,9 @@ dog_shop = Merchant.create(name: "Brian's Dog Shop", address: '125 Doggo St.', c
 
 #bike_shop items
 tire = bike_shop.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
+pedals = bike_shop.items.create(name: "Brass Knucks Pedals", description: "They'll make you feel like you're on speed!", price: 150, image: "https://content.competitivecyclist.com/images/items/900/SPP/SPP000A/POL.jpg", inventory: 5)
+brakes = bike_shop.items.create(name: "Disc Brakes", description: "They'll stop you on a dime!", price: 70, image: "https://www.excelsports.com/assets/gallery/110464-1.jpg", inventory: 12)
+
 
 #dog_shop items
 pull_toy = dog_shop.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
