@@ -1,4 +1,8 @@
-<h1>This is a admin user profile page</h1>
+<center>
+  <h1>Admin Dashboard</h1>
+  <p>
+    <%= link_to 'Merchant Status', '/admin/merchants' %>
+    </p>
 <% @orders.each do |order| %>
   <section id="order-<%= order.id %>">
   <%= order.id %>
@@ -8,6 +12,6 @@
   <% if order.packaged? %>
     <%= link_to "Ship Order", admin_ship_order_path(order), method: :patch %>
   <% end %>
-
 </section>
 <% end %>
+</center>

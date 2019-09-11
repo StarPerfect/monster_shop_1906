@@ -1,5 +1,8 @@
+<center><h2>Merchant Status:</h2>
+<i>(Click link next to merchant name to change status)</i>
+<p>  
 <% @merchants.each do |merchant| %>
-
+</p>
 <section id="merch-<%= merchant.id %>">
   <%= link_to merchant.name, admin_merchant_show_path(merchant) %>
   <%= merchant.city %>
@@ -10,5 +13,5 @@
     <%= link_to 'Enable', able_path(merchant), method: :patch %>
   <% end %>
 </section>
-
 <% end %>
+</center>
