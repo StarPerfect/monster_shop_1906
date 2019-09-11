@@ -26,7 +26,8 @@ class Order <ApplicationRecord
   end
 
   def total_value(merchant)
-    items.where(merchant_id: merchant.id).sum(:price)
+    a = items.where(merchant_id: merchant.id).pluck(:price, :quantity).flatten
+    a.first * a.last
   end
 
 end
