@@ -13,11 +13,4 @@ class Admin::DashboardController < ApplicationController
     x = order.update(status: 2)
     redirect_to "/admin"
   end
-
-  def method_name
-    # merchant = Merchant.find
-    # merchant.update(enabled: false)
-    # redirect_to ""
-  end
-
 end
