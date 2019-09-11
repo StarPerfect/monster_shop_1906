@@ -22,7 +22,7 @@
         <p>Logged in as <%= current_user.name %></p>
         <% if current_employee? %>
         <br>
-          <%= link_to 'Dashboard' %>
+          <%= link_to 'Dashboard', employee_dashboard_path %>
         <% elsif current_merchant? %>
         <br>
           <%= link_to 'Dashboard', merchant_dashboard_path %>

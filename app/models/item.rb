@@ -25,4 +25,18 @@ class Item <ApplicationRecord
     item_orders.empty?
   end
 
+  def self.item_stats_top
+    ItemOrder.joins(:item)
+             .order(quantity: :desc)
+             .limit(5)
+             .pluck("items.name", :quantity)
+  end
+
+  def self.item_stats_bottom
+    ItemOrder.joins(:item)
+             .order(:quantity)
+             .limit(5)
+             .pluck("items.name", :quantity)
+  end
+
 end

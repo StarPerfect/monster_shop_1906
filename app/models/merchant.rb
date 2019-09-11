@@ -26,4 +26,9 @@ class Merchant <ApplicationRecord
     item_orders.distinct.joins(:order).pluck(:city)
   end
 
+  def has_inventory?(item)
+    found_item = Item.find(item.item_id).inventory
+    item.quantity < found_item
+  end
+
 end

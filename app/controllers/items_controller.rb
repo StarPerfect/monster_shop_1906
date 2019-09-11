@@ -7,6 +7,8 @@ class ItemsController<ApplicationController
     else
       @items = Item.all
     end
+    @item_stats_top = Item.item_stats_top
+    @item_stats_bottom = Item.item_stats_bottom
   end
 
   def show

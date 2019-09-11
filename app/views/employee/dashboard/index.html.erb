@@ -1,0 +1,12 @@
+<% @merchant.items.each do |item| %>
+  <p>Name: <%= item.name %></p>
+  <p>Price: <%= item.price %></p>
+  <p>Description: <%= item.description %></p>
+  <p>Available Inventory: <%= item.inventory %></p>
+  <p>Active Status: <%= item.active? %></p>
+  <% if item.active? != true %>
+    <p><%= link_to "Deactiveate This Item"%></p>
+  <% else %>
+    <p><%= link_to "Activate This Item" %></p>
+  <% end %>
+<% end %>

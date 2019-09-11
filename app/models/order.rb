@@ -15,4 +15,19 @@ class Order <ApplicationRecord
   def self.sorted
     self.order(:status)
   end
+
+  def all_done?
+    item_orders.all? { |item_order| item_order.fulfilled == true }
+  end
+
+  def total_items_in_this_order(merchant)
+    items.where(merchant_id: merchant.id).sum(:quantity)
+
+  end
+
+  def total_value(merchant)
+    a = items.where(merchant_id: merchant.id).pluck(:price, :quantity).flatten
+    a.first * a.last
+  end
+
 end

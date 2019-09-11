@@ -4,9 +4,10 @@ class ItemOrder <ApplicationRecord
   belongs_to :item
   belongs_to :order
 
-  enum status: ["pending", "packaged", "shipped", "cancelled", "unfulfilled"]
+  enum status: ["unfulfilled", "fulfilled"]
 
   def subtotal
     price * quantity
   end
+
 end
