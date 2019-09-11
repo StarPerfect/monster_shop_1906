@@ -536,7 +536,7 @@ When I click the cancel button for an order, the following happens:
 ```
 
 ```
-[ ] done
+[x] done
 
 User Story 29, All Merchants fulfill items on an order
 
@@ -643,7 +643,7 @@ Then I see everything that merchant would see
 All users can see a merchant index page at "/merchants" which will list some basic information about each merchant. When admins visit this page, however, more functionality is found.
 
 ```
-[ ] done
+[x] done
 
 User Story 36, Admin disables a merchant account
 
@@ -876,7 +876,7 @@ Admins will need a way to view a list of all regular users and view their profil
 Admins can also change a user's role between being a regular user and a merchant user.
 
 ```
-[ ] done
+[x] done
 
 User Story 50, Admin Merchant Index Page
 
