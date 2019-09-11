@@ -9,7 +9,7 @@ RSpec.describe 'Login/Logout Functionality' do
       @corina = User.create(name: 'Corina Allen', address: '1488 S. Kenton', city: 'Aurora', state: 'CO', zip:'80014', email: 'StarPerfect@gmail.com', password: 'Hello123', role: 2, merchant_id: @bike_shop.id)
       @kate = User.create(name: "Kate Long", address: "123 Kate Street", city: "Fort Collins", state: "CO", zip: "80011", email:"kateaswesome@gmail.com", password: "ours", role: 3)
     end
-    
+
 
     it 'valid information redirects to profile path' do
       visit login_path
@@ -22,7 +22,7 @@ RSpec.describe 'Login/Logout Functionality' do
       expect(page).to_not have_content("This is a employee user profile page")
       expect(page).to_not have_content("This is a merchant user profile page")
       expect(page).to_not have_content("This is a admin user profile page")
-      expect(page).to have_content("This is a regular user profile page")
+      expect(page).to have_content("User Profile")
     end
 
     it 'valid employee login redirects to employee dashboard' do
@@ -36,7 +36,7 @@ RSpec.describe 'Login/Logout Functionality' do
       expect(page).to have_content("This is a employee user profile page")
       expect(page).to_not have_content("This is a merchant user profile page")
       expect(page).to_not have_content("This is a admin user profile page")
-      expect(page).to_not have_content("This is a regular user profile page")
+      expect(page).to_not have_content("User Profile")
     end
 
     it 'valid merchant login redirects to merchant dashboard' do
@@ -50,7 +50,7 @@ RSpec.describe 'Login/Logout Functionality' do
       expect(page).to_not have_content("This is a employee user profile page")
       expect(page).to have_content("This is a merchant user profile page")
       expect(page).to_not have_content("This is a admin user profile page")
-      expect(page).to_not have_content("This is a regular user profile page")
+      expect(page).to_not have_content("User Profile")
     end
 
     it 'valid employee login redirects to admin dashboard' do
@@ -64,7 +64,7 @@ RSpec.describe 'Login/Logout Functionality' do
       expect(page).to_not have_content("This is a employee user profile page")
       expect(page).to_not have_content("This is a merchant user profile page")
       expect(page).to have_content("This is a admin user profile page")
-      expect(page).to_not have_content("This is a regular user profile page")
+      expect(page).to_not have_content("User Profile")
     end
   end
 
