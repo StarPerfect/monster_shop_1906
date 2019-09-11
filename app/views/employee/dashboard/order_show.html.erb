@@ -4,10 +4,14 @@
     <p>Item: <%= item_order.item.name %></p>
     <p>Price: <%= item_order.price %></p>
     <p>Quantity to be Fulfilled: <%= item_order.quantity %></p>
-    <% if @merchant.has_inventory?(item_order) %>
-    <%= link_to "Fulfill This Orders Item", fulfill_path %>
+    <% if item_order.status == "unfulfilled" %>
+      <% if @merchant.has_inventory?(item_order) %>
+      <%= link_to "Fulfill This Orders Item", fulfill_path(item_order), method: :patch  %>
+      <% else %>
+        <p>You cannot fulfill this order, requested quantity is too high.</p>
+      <% end %>
     <% else %>
-      <p>You cannot fulfill this order, requested quantity is too high.</p>
+      <p>This item has already been fulfilled</p>
     <% end %>
     <br>
     <br>
