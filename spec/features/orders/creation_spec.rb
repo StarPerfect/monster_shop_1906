@@ -11,39 +11,27 @@ RSpec.describe("Order Creation") do
       @pull_toy = @brian.items.create(name: "Pull Toy", description: "Great pull toy!", price: 10, image: "http://lovencaretoys.com/image/cache/dog/tug-toy-dog-pull-9010_2-800x800.jpg", inventory: 32)
       @dog_bone = @brian.items.create(name: "Dog Bone", description: "They'll love it!", price: 20, image: "https://img.chewy.com/is/image/catalog/54226_MAIN._AC_SL1500_V1534449573_.jpg", active?:false, inventory: 21)
 
-      @order_1 = @user.orders.create!(name: @user.name, address: @user.address, city: @user.city, state: @user.state, zip: @user.zip, user_id: @user.id)
-      @item_order_1 = @order_1.item_orders.create!(item: @tire, price: @tire.price, quantity: 2)
     end
 
     it 'I can create a new order' do
+      visit item_path(@tire)
+        click_on "Add To Cart"
+      visit item_path(@pull_toy)
+        click_on "Add To Cart"
+      visit item_path(@dog_bone)
+        click_on "Add To Cart"
 
-      new_order = @user.orders.last
+      visit "/cart"
 
-      visit "/orders/#{new_order.id}"
+      click_on "Checkout"
 
-      within '.shipping-address' do
-        expect(page).to have_content(@user.name)
-        expect(page).to have_content(@user.address)
-        expect(page).to have_content(@user.city)
-        expect(page).to have_content(@user.state)
-        expect(page).to have_content(@user.zip)
-      end
+      new_order = Order.last
 
-      within "#item-#{@tire.id}" do
-        expect(page).to have_link(@tire.name)
-        expect(page).to have_link("#{@tire.merchant.name}")
-        expect(page).to have_content("$#{@tire.price}")
-        expect(page).to have_content("1")
-        expect(page).to have_content("$100")
-      end
-
-      within "#grandtotal" do
-        expect(page).to have_content("Total: $200")
-      end
-
-      within "#datecreated" do
-        expect(page).to have_content(new_order.created_at)
-      end
+      expect(current_path).to eq(user_orders_path)
+      expect(page).to have_content(new_order.id)
+      expect(page).to have_content(new_order.created_at)
+      expect(page).to have_content(new_order.status)
+      expect(page).to have_content(new_order.grandtotal)
     end
   end
 end

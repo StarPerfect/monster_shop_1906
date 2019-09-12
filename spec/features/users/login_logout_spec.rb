@@ -19,9 +19,9 @@ RSpec.describe 'Login/Logout Functionality' do
 
       click_button 'Login'
 
-      expect(page).to_not have_content("This is a employee user profile page")
-      expect(page).to_not have_content("This is a merchant user profile page")
-      expect(page).to_not have_content("This is a admin user profile page")
+      expect(page).to_not have_content("Merchant Employee Dashboard")
+      expect(page).to_not have_content("Merchant Admin Dashboard")
+      expect(page).to_not have_content("Admin Dashboard")
       expect(page).to have_content("User Profile")
     end
 
@@ -33,9 +33,9 @@ RSpec.describe 'Login/Logout Functionality' do
 
       click_button 'Login'
 
-      expect(page).to have_content("This is a employee user profile page")
-      expect(page).to_not have_content("This is a merchant user profile page")
-      expect(page).to_not have_content("This is a admin user profile page")
+      expect(page).to have_content("Merchant Employee Dashboard")
+      expect(page).to_not have_content("Merchant Admin Dashboard")
+      expect(page).to_not have_content("Admin Dashboard")
       expect(page).to_not have_content("User Profile")
     end
 
@@ -47,9 +47,8 @@ RSpec.describe 'Login/Logout Functionality' do
 
       click_button 'Login'
 
-      expect(page).to_not have_content("This is a employee user profile page")
-      expect(page).to have_content("This is a merchant user profile page")
-      expect(page).to_not have_content("This is a admin user profile page")
+      expect(page).to_not have_content("Merchant Employee Dashboard")
+      expect(page).to have_content("Merchant Admin Dashboard")
       expect(page).to_not have_content("User Profile")
     end
 
@@ -61,8 +60,7 @@ RSpec.describe 'Login/Logout Functionality' do
 
       click_button 'Login'
 
-      expect(page).to_not have_content("This is a employee user profile page")
-      expect(page).to_not have_content("This is a merchant user profile page")
+      expect(page).to_not have_content("Merchant Employee Dashboard")
       expect(page).to have_content("Admin Dashboard")
       expect(page).to_not have_content("User Profile")
     end

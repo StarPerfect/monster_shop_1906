@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 20190911010708) do
     t.string "name"
     t.string "description"
     t.integer "price"
-    t.string "image"
+    t.string "image", default: "https://www.celladorales.com/wp-content/uploads/2016/12/ShippingBox_sq.jpg"
     t.boolean "active?", default: true
     t.integer "inventory"
     t.bigint "merchant_id"
