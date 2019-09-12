@@ -6,3 +6,15 @@
 <p> <%= @merchant.city  %> </p>
 <p> <%= @merchant.state  %> </p>
 <p> <%= @merchant.zip %> </p>
+
+<% @orders.each do |order| %>
+  <% if order.total_items_in_this_order(@merchant) != 0 %>
+<br>
+<br>
+  <p>Order ID: <%=link_to order.id, merchant_order_show_path(order) %></p>
+  <p>Created At: <%= order.created_at %></p>
+  <p>Total Items: <%= order.total_items_in_this_order(@merchant) %></p>
+  <p>Total Value: <%= number_to_currency(order.total_value(@merchant)) %></p>
+  <% else %>
+  <% end %>
+<% end %>
