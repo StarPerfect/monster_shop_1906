@@ -1,0 +1,22 @@
+<center>
+<h1>All Merchant's Items</h1>
+<% @merchant.items.each do |item| %>
+<section id="merchant-item-<%= item.id %>">
+  <p><b><%= item.name %></b></p>
+  <% if item.no_orders? %>
+    <%= button_to "Delete", delete_item_path(item), method: :delete %>
+  <% end %>
+  <br />Price: <%= item.price %>
+  <br />Description: <%= item.description %>
+  <br />Available Inventory: <%= item.inventory %>
+  <br />Active Status: <%= item.active? %>
+  <%= link_to "Edit this item", edit_item_path(item) %>
+  <br /><% if item.active? == true %>
+    <%= link_to "Deactivate", item_status_path(item), method: :patch %>
+  <% else %>
+    <%= link_to "Activate",  item_status_path(item), method: :patch %>
+  <% end %>
+<% end %>
+</section>
+<%= link_to "Add a new item", new_item_path %>
+</center>
