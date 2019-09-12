@@ -6,8 +6,8 @@ RSpec.describe "merchant items" do
       @bike_shop = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
       @corina = User.create(name: 'Corina Allen', address: '1488 S. Kenton', city: 'Aurora', state: 'CO', zip:'80014', email: 'StarPerfect@gmail.com', password: 'Hello123', role: 2, merchant_id: @bike_shop.id)
       @brakes = @bike_shop.items.create(name: "Disc Brakes", description: "They'll stop you on a dime!", price: 70, image: "https://www.excelsports.com/assets/gallery/110464-1.jpg", inventory: 12)
-
     end
+
     it "can delete items that have never been ordered" do
 
       visit login_path
@@ -25,6 +25,7 @@ RSpec.describe "merchant items" do
       expect(page).to have_content("Our big hangry monster has eaten your item!")
       expect(page).to_not have_content(@brakes.name)
     end
+
     it "merchant can add an item" do
       visit login_path
       fill_in "email", with: @corina.email
@@ -50,6 +51,7 @@ RSpec.describe "merchant items" do
       expect(page).to have_content("Your new item has saved!")
       expect(page).to have_content(new_item.name)
     end
+
     it "merchant can edit an item" do
 
       visit login_path
@@ -73,7 +75,6 @@ RSpec.describe "merchant items" do
       click_on "Update Item"
       expect(current_path).to eq("/merchant/items")
       new_item = Item.last
-
     end
   end
 end

@@ -39,7 +39,6 @@ RSpec.describe 'Visitor' do
     it 'I can update my password' do
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@scott)
 
-
       visit profile_path
 
       expect(page).to have_link("Edit Password")
@@ -57,6 +56,59 @@ RSpec.describe 'Visitor' do
       expect(current_path).to eq(profile_path)
       expect(page).to have_content('Your password is updated!')
     end
+  end
+end
 
+
+RSpec.describe 'Visitor' do
+  describe 'User sees error messages when updating profile without correct info' do
+    before :each do
+      @scott = User.create!(name: "scott payton", address: "222 willow st", city: "aurora", state: "CO", zip: 99999, email: "hero@gmail.com", password: "blue")
+      @kate = User.create(name: "Kate Long", address: "123 Kate Street", city: "Fort Collins", state: "CO", zip: "80011", email:"kateaswesome@gmail.com", password: "ours", role:2 )
+    end
+
+    it 'updating profile with missing info' do
+      visit login_path
+
+      fill_in :email, with: @scott.email
+      fill_in :password, with: @scott.password
+
+      click_button 'Login'
+
+      click_link "Edit Profile"
+
+      fill_in "Name", with: nil
+      fill_in "Address", with: nil
+      fill_in "City", with: nil
+      fill_in "State", with: nil
+      fill_in "Zip", with: nil
+      fill_in "Email", with: nil
+
+      click_button "Update Profile"
+
+      expect(current_path).to eq('/profile/edit')
+      expect(page).to have_content("Name can't be blank, Address can't be blank, City can't be blank, State can't be blank, Zip can't be blank, and Email can't be blank")
+    end
+
+    it 'I can update my password' do
+      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@scott)
+
+      visit profile_path
+
+      expect(page).to have_link("Edit Password")
+
+      click_link "Edit Password"
+
+      expect(current_path).to eq('/profile/edit_password')
+
+
+      fill_in "Password", with: nil
+      fill_in "Password confirmation", with: nil
+
+      click_button "Update Password"
+
+      expect(current_path).to eq('/profile/edit_password')
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
   end
 end

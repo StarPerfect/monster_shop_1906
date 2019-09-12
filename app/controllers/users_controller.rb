@@ -35,7 +35,7 @@ class UsersController < ApplicationController
        flash[:notice] = 'Your profile has been updated!'
        redirect_to '/profile'
    else
-       flash[:error]= @user.errors.full_messages
+       flash[:error]= @user.errors.full_messages.to_sentence
        redirect_to '/profile/edit'
    end
  end
@@ -46,7 +46,7 @@ class UsersController < ApplicationController
        flash[:notice] = 'Your password is updated!'
        redirect_to '/profile'
    else
-       flash[:error]= @user.errors.full_messages
+       flash[:error]= @user.errors.full_messages.to_sentence
        redirect_to '/profile/edit_password'
    end
  end
