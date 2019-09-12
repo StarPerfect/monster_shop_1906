@@ -13,7 +13,7 @@ RSpec.describe 'Merchant Admin can CRUD items' do
     fill_in :password, with: 'yours'
 
     click_button 'Login'
-save_and_open_page
+    
     click_link 'Merchant Items'
 
     within "#merchant-item-#{pedals.id}" do
