@@ -1,17 +1,3 @@
-# User Story 20, User Can Edit their Profile Data
-#
-# As a registered user
-# When I visit my profile page
-# I see a link to edit my profile data
-# When I click on the link to edit my profile data
-# I see a form like the registration page
-# The form is prepopulated with all my current information except my password
-# When I change any or all of that information
-# And I submit the form
-# Then I am returned to my profile page
-# And I see a flash message telling me that my data is updated
-# And I see my updated information
-
 require 'rails_helper'
 
 RSpec.describe 'Visitor' do
@@ -23,9 +9,12 @@ RSpec.describe 'Visitor' do
     end
 
     it 'The form is prepopulated with current info except password' do
-      allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@scott)
+      visit login_path
 
-      visit profile_path #"/users/#{@scott.id}"
+      fill_in :email, with: @scott.email
+      fill_in :password, with: @scott.password
+
+      click_button 'Login'
 
       click_link "Edit Profile"
 
@@ -37,15 +26,14 @@ RSpec.describe 'Visitor' do
       fill_in "Email", with: "hero@gmail.com"
 
       click_button "Update Profile"
-      @scott.reload
-      expect(current_path).to eq(profile_path)#("/users/#{@scott.id}")
-      expect(page).to have_content(@scott.name)
-      expect(page).to have_content(@scott.address)
-      expect(page).to have_content(@scott.city)
-      # expect(page).to have_content("LOLOLOL")
-      expect(@scott.state).to eq("LOLOLOL")
+
+      expect(current_path).to eq(profile_path)
+      expect(page).to have_content("scott payton")
+      expect(page).to have_content("222 willows st")
+      expect(page).to have_content("LOLOLOL")
+      expect(page).to have_content("aurora")
       expect(@scott.zip).to eq("99999")
-      expect(page).to have_content(@scott.email)
+      expect(page).to have_content("hero@gmail.com")
     end
 
     it 'I can update my password' do
