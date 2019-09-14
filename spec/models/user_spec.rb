@@ -9,4 +9,10 @@ RSpec.describe User, type: :model do
     it { should validate_presence_of :zip }
     it { should validate_presence_of :email }
   end
+
+  describe 'validations' do
+    it { should have_many :orders }
+    it { should have_many :addresses }
+    # it { should have_many :merchant } how to test optional condition?
+  end
 end
