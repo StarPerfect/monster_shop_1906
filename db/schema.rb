@@ -10,10 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190911010708) do
+ActiveRecord::Schema.define(version: 20190914115904) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "addresses", force: :cascade do |t|
+    t.string "street"
+    t.string "city"
+    t.string "state"
+    t.string "zip"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "nickname"
+    t.index ["user_id"], name: "index_addresses_on_user_id"
+  end
 
   create_table "item_orders", force: :cascade do |t|
     t.bigint "order_id"
@@ -31,7 +43,7 @@ ActiveRecord::Schema.define(version: 20190911010708) do
     t.string "name"
     t.string "description"
     t.integer "price"
-    t.string "image", default: "https://www.celladorales.com/wp-content/uploads/2016/12/ShippingBox_sq.jpg"
+    t.string "image"
     t.boolean "active?", default: true
     t.integer "inventory"
     t.bigint "merchant_id"
@@ -87,6 +99,7 @@ ActiveRecord::Schema.define(version: 20190911010708) do
     t.index ["merchant_id"], name: "index_users_on_merchant_id"
   end
 
+  add_foreign_key "addresses", "users"
   add_foreign_key "item_orders", "items"
   add_foreign_key "item_orders", "orders"
   add_foreign_key "items", "merchants"
