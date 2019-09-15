@@ -1,14 +1,19 @@
 <center>
   <h1>Become a User of the Little Shop of Monsters</h1>
-  <%= form_tag '/users', method: :post do %>
-  <%= text_field_tag :name, nil, placeholder: 'Name' %>
-  <%= text_field_tag :address, nil, placeholder: 'Address'  %>
-  <%= text_field_tag :city, nil, placeholder: 'City'  %>
-  <%= text_field_tag :state, nil, placeholder: 'State'  %>
-  <%= text_field_tag :zip, nil, placeholder: 'Zip'  %>
-  <%= email_field_tag :email, nil, placeholder: 'Email'  %>
-  <%= password_field_tag :password, nil, placeholder: 'Password'  %>
-  <%= password_field_tag :password_confirmation, nil, placeholder: 'password_confirmation Password'  %>
-  <%= submit_tag 'Save Me' %>
+
+<%= form_with model: @user do |f| %>
+  <%= f.text_field :name, value: nil, placeholder: 'Name' %>
+  <%= f.email_field :email, value: nil, placeholder: 'Email' %>
+  <%= f.password_field :password, value: nil, placeholder: 'Password' %>
+  <%= f.password_field :password_confirmation, value: nil, placeholder: 'Confirm Password' %>
+<p>Address:</p>
+  <%= f.fields_for :addresses do |addresses_form| %>
+      <%= addresses_form.hidden_field :nickname, value: 'Home' %>
+      <%= addresses_form.text_field :street, value: nil, placeholder: 'Street Address' %>
+      <%= addresses_form.text_field :city, value: nil, placeholder: 'City' %>
+      <%= addresses_form.text_field :state, value: nil, placeholder: 'State' %>
+      <%= addresses_form.text_field :zip, value: nil, placeholder: 'Zip' %>
   <% end %>
+  <%= f.submit 'Save Me!' %>
+<% end %>
 </center>
