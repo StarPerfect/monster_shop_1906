@@ -7,7 +7,6 @@ class User < ApplicationRecord
                         :zip,
                         :email
 
-  # validates_presence_of :password, require: true
   validates :email, uniqueness: true, presence: true
 
   has_many :orders
