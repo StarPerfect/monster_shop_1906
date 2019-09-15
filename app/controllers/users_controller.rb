@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
+    1.times { @user.addresses.build }
   end
 
   def create
@@ -54,9 +55,13 @@ class UsersController < ApplicationController
 
   private
 
+  # def user_params
+  #   params.permit(:name, :address, :city, :state, :zip, :email, :password, :password_confirmation)
+  # end
+
   def user_params
-    params.permit(:name, :address, :city, :state, :zip, :email, :password, :password_confirmation)
-  end
+   params.require(:user).permit(:name, :email, :password, :password_confirmation, addresses_attributes: [:id, :nickname, :street, :city, :state, :zip])
+ end
 
   def updated_profile_params
     params.require(:user).permit(:name, :address, :city, :state, :email, :zip)
