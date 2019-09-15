@@ -4,14 +4,14 @@ RSpec.describe 'As a visitor I see a link to register on the nav bar' do
   it 'can click register and sign up as a user' do
     visit '/register'
 
-    fill_in :name, with: 'Corina Allen'
-    fill_in :address, with: '1488 S Kenton St'
-    fill_in :city, with: 'Aurora'
-    fill_in :state, with: 'CO'
-    fill_in :zip, with: '80012'
-    fill_in :email, with: 'StarPerfect@gmail.com'
-    fill_in :password, with: 'Hello123'
-    fill_in :password_confirmation, with: 'Hello123'
+    fill_in 'Name', with: 'Corina Allen'
+    fill_in 'Street Address', with: '1488 S Kenton St'
+    fill_in 'City', with: 'Aurora'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip', with: '80012'
+    fill_in 'Email', with: 'StarPerfect@gmail.com'
+    fill_in 'Password', with: 'Hello123'
+    fill_in 'Confirm Password', with: 'Hello123'
 
     click_button 'Save Me'
 
@@ -26,14 +26,14 @@ RSpec.describe 'Incomplete registration form' do
   it 'sees a flash notification' do
     visit '/register'
 
-    fill_in :name, with: nil
-    fill_in :address, with: '1488 S Kenton St'
-    fill_in :city, with: 'Aurora'
-    fill_in :state, with: 'CO'
-    fill_in :zip, with: nil
-    fill_in :email, with: 'StarPerfect@gmail.com'
-    fill_in :password, with: nil
-    fill_in :password_confirmation, with: 'Hello123'
+    fill_in 'Name', with: nil
+    fill_in 'Street Address', with: '1488 S Kenton St'
+    fill_in 'City', with: 'Aurora'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip', with: nil
+    fill_in 'Email', with: 'StarPerfect@gmail.com'
+    fill_in 'Password', with: nil
+    fill_in 'Confirm Password', with: 'Hello123'
 
     click_button 'Save Me'
 
@@ -50,14 +50,14 @@ RSpec.describe 'Not Unique Email for registration' do
     user = User.create(name:"Santiago", address:"123 tree st", city:"lakewood", state:"CO", zip: "19283", email:"santamonica@hotmail.com", role:3, password: "mine3 ")
 
     visit "/register"
-    fill_in :name, with: 'Scotty'
-    fill_in :address, with: '1488 S Kenton St'
-    fill_in :city, with: 'Aurora'
-    fill_in :state, with: 'CO'
-    fill_in :zip, with: '80011'
-    fill_in :email, with: "santamonica@hotmail.com"
-    fill_in :password, with: 'Hello123'
-    fill_in :password_confirmation, with: 'Hello123'
+    fill_in 'Name', with: 'Scotty'
+    fill_in 'Street Address', with: '1488 S Kenton St'
+    fill_in 'City', with: 'Aurora'
+    fill_in 'State', with: 'CO'
+    fill_in 'Zip', with: '80011'
+    fill_in 'Email', with: "santamonica@hotmail.com"
+    fill_in 'Password', with: 'Hello123'
+    fill_in 'Confirm Password', with: 'Hello123'
     click_on "Save Me"
     expect(current_path).to eq('/users')
     expect(page).to have_content("Email has already been taken")
