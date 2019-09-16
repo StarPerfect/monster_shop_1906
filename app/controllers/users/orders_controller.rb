@@ -39,6 +39,7 @@ class Users::OrdersController < ApplicationController
   end
 
   def order_params
+    binding.pry
     {name: current_user.name, address: current_user.address, city: current_user.city, state: current_user.state, zip: current_user.zip}
   end
 
