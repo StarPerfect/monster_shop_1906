@@ -16,7 +16,8 @@ describe Order, type: :model do
 
   describe 'instance methods' do
     before :each do
-      @user = User.create!(name:"Santiago", address:"123 tree st", city:"Lakewood", state:"CO", zip: "19283", email:"santamonica@hotmail.com", password: "test", role:0)
+      @user = User.create!(name:"Santiago", email:"santamonica@hotmail.com", password: "test", role:0)
+      @user.addresses.build(nickname: 'Home', street:"123 tree st", city:"Lakewood", state:"CO", zip: "19283",)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
