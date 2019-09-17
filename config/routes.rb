@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   get '/profile/orders/:id', to: 'users/orders#show', as: :user_order
   patch '/profile/orders/:id', to: 'users/orders#cancel'
 
+  get '/profile/addresses', to: 'addresses#show'
+
   get '/employee', to: 'employee/dashboard#show', as: :employee_dashboard
 
   get '/admin', to: 'admin/dashboard#show', as: :admin_dashboard
@@ -62,8 +64,11 @@ Rails.application.routes.draw do
   get '/merchant/items/edit', to: "merchant/dashboard#edit", as: :edit_item
   patch '/merchant/items/:id', to: "merchant/dashboard#item_update", as: :update_item
 
-
   get '/login', to: 'sessions#new', as: :login
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy', as: :logout
+
+  resources :users, only: [] do
+    resources :addresses
+  end
 end
