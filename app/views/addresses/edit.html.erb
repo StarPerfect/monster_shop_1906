@@ -1,2 +1,9 @@
 <h3>Edit <%= @address.nickname %> Address</h3>
-<%=  %>
+<%= form_with model: @address, local: true do |f| %>
+  <%= f.text_field :nickname, placeholder: @address.nickname %>
+  <%= f.text_field :street, placeholder: @address.street %>
+  <%= f.text_field :city, placeholder: @address.city %>
+  <%= f.text_field :state, placeholder: @address.state %>
+  <%= f.text_field :zip, placeholder: @address.zip %>
+<%= f.submit 'Update Address' %>
+<% end %>
