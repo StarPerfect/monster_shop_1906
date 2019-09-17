@@ -1,0 +1,13 @@
+<center>
+<h3>All User Addresses</h3>
+  <%= @user.addresses.each do |address| %>
+    <section id="address-<%= address.id %>">
+    <p>Address Nickname: <%= address.nickname %></p>
+    <br /><%= address.street %>
+    <br /><%= address.city %>
+    <br /><%= address.state %>
+    <br /><%= address.zip %>
+
+    </section>
+  <% end %>
+</center>
