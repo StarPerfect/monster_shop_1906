@@ -8,7 +8,7 @@
     <br /><%= address.state %>
     <br /><%= address.zip %>
     <% if address.order_id == nil %>
-      <%= link_to "Edit #{address.nickname} Address", edit_user_address_path(@user.id,address.id) %>
+      <%= link_to "Edit #{address.nickname} Address", edit_address_path(address.id) %>
     <% end %>
     </section>
   <% end %>

@@ -69,6 +69,6 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy', as: :logout
 
   resources :users, only: [] do
-    resources :addresses
+    resources :addresses, shallow: true #allows for the uncomplicated nested route paths while still keeping resource nested
   end
 end
