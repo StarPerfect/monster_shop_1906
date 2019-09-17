@@ -1,13 +1,15 @@
 <center>
 <h3>All User Addresses</h3>
-  <%= @user.addresses.each do |address| %>
+  <%= @addresses.each do |address| %>
     <section id="address-<%= address.id %>">
     <p>Address Nickname: <%= address.nickname %></p>
     <br /><%= address.street %>
     <br /><%= address.city %>
     <br /><%= address.state %>
     <br /><%= address.zip %>
-
+    <% if address.order_id == nil %>
+      <%= link_to "Edit #{address.nickname} Address", edit_user_address_path(@user.id,address.id) %>
+    <% end %>
     </section>
   <% end %>
 </center>
