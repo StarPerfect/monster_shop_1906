@@ -20,6 +20,15 @@ RSpec.describe 'Addresses Index Page' do
   end
 
   it 'can edit an address from the index page' do
-  
+    visit profile_path
+
+    click_link 'Edit Addresses'
+
+    within "#address-#{@home.id}" do
+      click_link "Edit #{@home.nickname} Address"
+
+      expect(current_path).to eq(edit_user_address_path(@user,@home))
+    end
+
   end
 end
