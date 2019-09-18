@@ -1,5 +1,5 @@
 class Order <ApplicationRecord
-  validates_presence_of :name, :address, :city, :state, :zip
+  validates_presence_of :name
 
   belongs_to :user
   belongs_to :address
