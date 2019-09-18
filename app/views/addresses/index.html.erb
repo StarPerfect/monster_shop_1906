@@ -5,7 +5,7 @@
     <br />Address Nickname: <%= address.nickname %>
     <br /><%= address.street %>
     <br /><%= address.city %>, <%= address.state %> <%= address.zip %>
-<p><% if address.order_id == nil %>
+    <p><% if address.order_id == nil %>
       <%= link_to "Edit #{address.nickname} Address", edit_address_path(address.id) %>
       <%= link_to "Delete #{address.nickname} Address", address_path(address.id), method: :delete %>
     <% end %></p>
