@@ -1,0 +1,10 @@
+<center><h3>Add A New Address</h3>
+<%= form_with model: [@user,@address], local: true do |f| %>
+  <%= f.text_field :nickname, value: nil, placeholder: 'Nickname' %>
+  <%= f.text_field :street, value: nil, placeholder: 'Street Address' %>
+  <%= f.text_field :city, value: nil, placeholder: 'City' %>
+  <%= f.text_field :state, value: nil, placeholder: 'State' %>
+  <%= f.text_field :zip, value: nil, placeholder: 'Zip' %>
+<%= f.submit 'Add Address' %>
+<% end %>
+</center>
