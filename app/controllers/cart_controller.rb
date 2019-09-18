@@ -8,6 +8,7 @@ class CartController < ApplicationController
 
   def show
     @items = cart.items
+    @user = User.find(session[:user_id])
   end
 
   def empty
