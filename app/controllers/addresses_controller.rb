@@ -4,6 +4,17 @@ class AddressesController < ApplicationController
     @addresses = User.find(params[:user_id]).addresses
   end
 
+  def new
+    @user = User.find(params[:user_id])
+    @address = Address.new
+  end
+
+  def create
+    @user = User.find(params[:user_id])
+    @user.addresses << Address.create(address_params)
+    redirect_to user_addresses_path(@user)
+  end
+
   def edit
     @address = Address.find(params[:id])
   end
