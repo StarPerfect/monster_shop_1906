@@ -4,14 +4,15 @@
 <h2>Profile</h2>
   <p>Name: <%= @user.name %> </p>
   <p>Email: <%= @user.email %> </p>
-  <% @user.addresses.each do |address| %>
-  <p>Nickname: <%= address.nickname %></p>
-  <p>Address: <%= address.street %> </p>
-  <p>City: <%= address.city %> </p>
-  <p>State: <%= address.state %> </p>
-  <p>Zip: <%= address.zip %> </p>
+  <p><% @user.addresses.each do |address| %></p>
+  <br>Nickname: <%= address.nickname %>
+  <br>Address: <%= address.street %>
+  <br>City: <%= address.city %>
+  <br>State: <%= address.state %>
+  <br>Zip: <%= address.zip %>
   <% end  %>
   <% if current_user == @user %>
+  <p><%= link_to 'Add New Address', new_user_address_path(@user) %></p>
     <%= link_to "Edit Account Info", profile_edit_path %>
     <%= link_to "Edit Password", profile_edit_password_path %>
     <%= link_to 'Edit Addresses', user_addresses_path(@user) %>
