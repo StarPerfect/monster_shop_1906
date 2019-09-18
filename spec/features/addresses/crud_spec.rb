@@ -57,21 +57,40 @@ RSpec.describe 'Addresses Index Page' do
 
     click_button 'Add Address'
 
-    moms = Address.last
+    @moms = Address.last
 
     expect(current_path).to eq(user_addresses_path(@user))
-    expect(page).to have_css("#address-#{moms.id}")
+    expect(page).to have_css("#address-#{@moms.id}")
     expect(page).to have_content("Mom's House")
     expect(page).to have_content('Yuma')
   end
 
-  # it 'can delete address from index page only if it has no orders' do
-  #   visit profile_path
-  #
-  #   click_link 'Edit Addresses'
-  #
-  #   within "#address-#{@home.id}" do
-  #     click_link "Delete #{@home.nickname} Address"
-  #   end
-  # end
+  it 'can delete address from index page only if it has no orders' do
+    visit profile_path
+
+    click_link 'Add New Address'
+
+    expect(current_path).to eq("/users/#{@user.id}/addresses/new")
+
+    fill_in 'Nickname', with: "Mom's House"
+    fill_in 'Street Address', with: '3043 S 47th Ave'
+    fill_in 'City', with: 'Yuma'
+    fill_in 'State', with: 'AZ'
+    fill_in 'Zip', with: 85364
+
+    click_button 'Add Address'
+
+    moms = Address.last
+
+    expect(current_path).to eq(user_addresses_path(@user))
+
+    within "#address-#{moms.id}" do
+      click_link "Delete #{moms.nickname} Address"
+    end
+
+      expect(current_path).to eq(user_addresses_path(@user))
+      expect(page).to_not have_content(moms.nickname)
+      expect(page).to_not have_content(moms.street)
+      expect(page).to_not have_content(moms.city)
+  end
 end
