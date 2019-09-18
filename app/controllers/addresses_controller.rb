@@ -26,10 +26,14 @@ class AddressesController < ApplicationController
   end
 
   def destroy
+    @address = Address.find(params[:id])
+    @user = @address.user
+    @address.destroy
+    redirect_to user_addresses_path(@user)
   end
 
   private
-  # <%= link_to "Delete #{address.nickname} Address", delete_user_address(@user.id,address.id), method: :delete %>
+
   def address_params
     params.require(:address).permit(:nickname, :street, :city, :state, :zip)
   end
