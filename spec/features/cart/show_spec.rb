@@ -57,6 +57,7 @@ RSpec.describe 'Cart show' do
       end
     end
   end
+
   describe "When I haven't added anything to my cart" do
     describe "and visit my cart show page" do
       it "I see a message saying my cart is empty" do
@@ -69,7 +70,47 @@ RSpec.describe 'Cart show' do
         visit '/cart'
         expect(page).to_not have_link("Empty Cart")
       end
+    end
+  end
+end
 
+RSpec.describe 'logged in user must select which address to ship to before able to checkout' do
+  before :each do
+    @user = User.create(name: 'Queen Bee', email: 'beyonce@gmail.com', password: 'queenb')
+    @home = Address.create(nickname: 'Home', street: '1111 Hive Drive', city: 'Denver', state: 'CO', zip: '80204')
+    @work = Address.create(nickname: 'Work', street: '333 Petal Pond Drive', city: 'Denver', state: 'CO', zip: '80204')
+    @user.addresses << @home
+    @user.addresses << @work
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
+
+    @mike = Merchant.create(name: "Mike's Print Shop", address: '123 Paper Rd.', city: 'Denver', state: 'CO', zip: 80203)
+    @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
+
+    @tire = @meg.items.create(name: "Gatorskins", description: "They'll never pop!", price: 100, image: "https://www.rei.com/media/4e1f5b05-27ef-4267-bb9a-14e35935f218?size=784x588", inventory: 12)
+    @paper = @mike.items.create(name: "Lined Paper", description: "Great for writing on!", price: 20, image: "https://cdn.vertex42.com/WordTemplates/images/printable-lined-paper-wide-ruled.png", inventory: 25)
+    @pencil = @mike.items.create(name: "Yellow Pencil", description: "You can write on paper with it!", price: 2, image: "https://images-na.ssl-images-amazon.com/images/I/31BlVr01izL._SX425_.jpg", inventory: 100)
+
+    visit "/items/#{@paper.id}"
+    click_on "Add To Cart"
+
+    visit "/items/#{@tire.id}"
+    click_on "Add To Cart"
+
+    visit "/items/#{@pencil.id}"
+    click_on "Add To Cart"
+
+    @items_in_cart = [@paper,@tire,@pencil]
+  end
+
+  it 'can checkout and see a page of shipping addresses to select from' do
+    visit '/cart'
+
+    within "#address-#{@home.id}" do
+      expect(page).to have_content("Ship Order to #{@home.nickname}")
+    end
+
+    within "#address-#{@work.id}" do
+      expect(page).to have_content("Ship Order to #{@work.nickname}")
     end
   end
 end
