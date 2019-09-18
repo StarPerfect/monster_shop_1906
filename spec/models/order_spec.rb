@@ -3,13 +3,10 @@ require 'rails_helper'
 describe Order, type: :model do
   describe "validations" do
     it { should validate_presence_of :name }
-    it { should validate_presence_of :address }
-    it { should validate_presence_of :city }
-    it { should validate_presence_of :state }
-    it { should validate_presence_of :zip }
   end
 
   describe "relationships" do
+    it { should belong_to :address }
     it {should have_many :item_orders}
     it {should have_many(:items).through(:item_orders)}
   end
@@ -17,7 +14,7 @@ describe Order, type: :model do
   describe 'instance methods' do
     before :each do
       @user = User.create!(name:"Santiago", email:"santamonica@hotmail.com", password: "test", role:0)
-      @user.addresses.build(nickname: 'Home', street:"123 tree st", city:"Lakewood", state:"CO", zip: "19283",)
+      @home = @user.addresses.create(nickname: 'Home', street:"123 tree st", city:"Lakewood", state:"CO", zip: "19283",)
       allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(@user)
 
       @meg = Merchant.create(name: "Meg's Bike Shop", address: '123 Bike Rd.', city: 'Denver', state: 'CO', zip: 80203)
