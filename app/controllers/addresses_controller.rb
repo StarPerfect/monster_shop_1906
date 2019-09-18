@@ -8,12 +8,18 @@ class AddressesController < ApplicationController
     @address = Address.find(params[:id])
   end
 
+  def update
+    @address = Address.find(params[:id])
+    @address.update(address_params)
+    redirect_to user_addresses_path(@address.user)
+  end
+
   def destroy
   end
 
-  # private
+  private
   # <%= link_to "Delete #{address.nickname} Address", delete_user_address(@user.id,address.id), method: :delete %>
-  # def address_params
-  #   params.require(:address).permit(:nickname, :street, :city, :state, :zip)
-  # end
+  def address_params
+    params.require(:address).permit(:nickname, :street, :city, :state, :zip)
+  end
 end
