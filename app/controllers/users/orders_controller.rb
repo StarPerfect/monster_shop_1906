@@ -6,8 +6,9 @@ class Users::OrdersController < ApplicationController
   end
 
   def create
-    user = current_user
-    order = user.orders.create(order_params)
+    @user = User.find(params[:user_id])
+    @address = Address.find(params[:address_id])
+    order = @user.orders.create(name: @user.name, address: @address)
     if order.save
       cart.items.each do |item,quantity|
         order.item_orders.create({
@@ -23,7 +24,6 @@ class Users::OrdersController < ApplicationController
   end
 
   def show
-    @user = current_user
     @order = Order.find(params[:id])
   end
 
@@ -37,10 +37,4 @@ class Users::OrdersController < ApplicationController
     flash[:message] = "Success! Our Big Hangry Monster ate your order therefore it's been cancelled!"
     redirect_to profile_path
   end
-
-  def order_params
-    binding.pry
-    {name: current_user.name, address: current_user.address, city: current_user.city, state: current_user.state, zip: current_user.zip}
-  end
-
 end
